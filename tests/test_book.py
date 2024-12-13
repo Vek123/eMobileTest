@@ -1,6 +1,6 @@
-from tests.config import test_client, db_session, engine_session
 from schemas.book import BookIn
 from schemas.author import AuthorIn
+from tests.config import test_client, db_session, engine_session
 
 
 class TestBook:

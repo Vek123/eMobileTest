@@ -46,11 +46,11 @@ async def db_session(engine_session):
 async def test_client(db_session):
     """Create a test client that uses the override_get_db fixture to return a session."""
 
-    def override_get_session():
+    async def override_get_session():
         try:
             yield db_session
         finally:
-            db_session.close()
+            await db_session.close()
     app = FastAPI()
     app.include_router(
         api_router,

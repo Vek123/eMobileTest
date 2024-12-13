@@ -70,7 +70,7 @@ async def update_book(
         book: BookIn,
         session: Annotated[AsyncSession, Depends(get_session)],
 ) -> BookOutRel:
-    stmt = update(Book).where(Book.id == book_id).values(**book.dict())
+    stmt = update(Book).where(Book.id == book_id).values(**book.model_dump())
     await session.execute(stmt)
     await session.commit()
 
